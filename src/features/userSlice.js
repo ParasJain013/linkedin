@@ -1,15 +1,14 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { fetchCount } from './counter/counterAPI';
 
 
 
-export const incrementAsync = createAsyncThunk(
-  'counter/fetchCount',
-  async (amount) => {
-    const response = await fetchCount(amount);
-    return response.data;
-  }
-);
+// export const incrementAsync = createAsyncThunk(
+//   'counter/fetchCount',
+//   async (amount) => {
+//     const response = await fetchCount(amount);
+//     return response.data;
+//   }
+// );
 
 export const userSlice = createSlice({
   name: 'user',
@@ -30,7 +29,7 @@ export const userSlice = createSlice({
 
 export const { login , logout} = userSlice.actions;
 
-export const selectUser = (state) => state.user.user;
+export const selectUser = (state) => state.user;
 
 
 export default userSlice.reducer;
