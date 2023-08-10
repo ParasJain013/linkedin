@@ -21,7 +21,7 @@ function Feed() {
 onSnapshot(q,(snapshot)=>{
   snapshot.docs.map((doc)=>{
 
-    console.log(doc)
+    // console.log(doc)
   })
 setPosts(
   snapshot.docs.map((doc)=>({
@@ -34,7 +34,7 @@ setPosts(
     }
   })
   ))
-  console.log(posts);
+  // console.log(posts);
 }
 )
 
@@ -58,7 +58,7 @@ setPosts(
       
     });
     setInput("");
-    console.log("TIMESTAMP")
+    // console.log("TIMESTAMP")
   }
   return (
     <div className="feed">

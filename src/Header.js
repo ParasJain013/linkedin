@@ -5,7 +5,16 @@ import './Header.css'
 import HeaderOption from './HeaderOption';
 // import HomeIcon from '@mui/icons-material/Home';
 import {Home,People,BusinessCenter,Message,Notifications} from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
+import { logout } from './features/userSlice';
+import { signOut } from 'firebase/auth';
+import { auth } from './firebase';
 export default function Header() {
+  const dispatch=useDispatch();
+  const func_logout = ()=>{
+    dispatch(logout());
+    signOut(auth);
+  }
   return (
     <div className='header'>
       <div className="header_left">
@@ -14,7 +23,7 @@ export default function Header() {
          <LinkedIn fontSize='large' color='primary'/>
         <div className="header_search">
             <SearchIcon />
-            <input type="text" name=" " id="" />
+            <input type="text" name=" " id=""/>
         </div>
       </div>
       <div className="header_right">
@@ -23,7 +32,7 @@ export default function Header() {
          <HeaderOption Icon={BusinessCenter} title='Jobs'/>
          <HeaderOption Icon={Message} title='Messaging'/>
          <HeaderOption Icon={Notifications} title='Notifications'/>
-         <HeaderOption avatar='https://source.unsplash.com/Se4gEkdajZs' title='Me'/>
+         <HeaderOption avatar="https://source.unsplash.com/Se4gEkdajZs" title='Me' onClick={func_logout}/>
       </div>
     </div>
   )
