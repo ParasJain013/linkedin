@@ -3,6 +3,7 @@ import './App.css';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Feed from './Feed';
+import News from './News';
 import Login from './Login';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout, selectUser } from './features/userSlice';
@@ -42,6 +43,8 @@ function App() {
             <Sidebar />                     {/* SideBar containing Views and Recents and profile overview*/}
 
             <Feed />
+
+            <News/>
           </div>
 
         </div>)

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { collection, getDocs, orderBy } from "firebase/firestore";
-
+import FlipMove from 'react-flip-move';
 import './Feed.css'
 import CreateIcon from '@mui/icons-material/Create'
 import InputOption from './InputOption'
@@ -8,11 +8,14 @@ import { Image, Subscriptions, EventNote, CalendarViewDay } from '@mui/icons-mat
 import Post from './Post'
 import { db } from './firebase'
 import { doc, setDoc, addDoc,onSnapshot , query,serverTimestamp} from "firebase/firestore";
+import { useSelector } from 'react-redux';
+import { selectUser } from './features/userSlice';
 
 function Feed() {
   const [posts, setPosts] = useState([
   ])
   const [input, setInput] = useState("")
+  const user = useSelector(selectUser);
 
 
 
@@ -22,6 +25,7 @@ onSnapshot(q,(snapshot)=>{
   snapshot.docs.map((doc)=>{
 
     // console.log(doc)
+    // {console.log(doc._key.path.segments[6])}
   })
 setPosts(
   snapshot.docs.map((doc)=>({
@@ -34,7 +38,7 @@ setPosts(
     }
   })
   ))
-  // console.log(posts);
+  console.log(posts);
 }
 )
 
@@ -50,8 +54,8 @@ setPosts(
     //   message: "where is first post"
     // },{merge:true} );
     addDoc(collection(db, "posts"), {
-      name: "Paras",
-      description: "This is Test",
+      name: user.displayName,
+      description: user.email,
       message: input,
       photoUrl: "",
       timestamp:serverTimestamp(),
@@ -78,14 +82,19 @@ setPosts(
         </div>
       </div>
       {/* POST */}
-      {posts.map(({id,data:{name,description,message,photoUrl}}) => (
+        
+      <FlipMove staggerDelayBy={150}>
+      {posts.map(({id,data:{name,description,message,photoUrl}}) =>(
+        // {console.log("called"+message)}
+
         <Post 
         key={id}
         name={name}
         description={description}
         message={message}
         photoUrl={photoUrl}/>
-      ))}
+        ))}
+        </FlipMove>
     </div>
   )
 }

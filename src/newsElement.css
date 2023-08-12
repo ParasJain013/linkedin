@@ -1,0 +1,17 @@
+.newsElement{
+    background-color: white;
+    margin: 3px 10px;
+    border-radius: 10px;
+    padding: 10px;
+    border-width: 1px;
+    border: solid whitesmoke;
+}
+.newsElement>a{
+    color: gray;
+    font-size: small;
+    
+}
+.newsElement:hover{
+    background-color: rgb(198, 196, 196);
+    cursor: auto;
+}

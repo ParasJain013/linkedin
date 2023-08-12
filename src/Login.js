@@ -115,9 +115,9 @@ export default function Login() {
                         <div className="SignUp_elements">
                             <label htmlFor="lastName">Last Name</label>
                             <input type="text" id='lastName' onChange={(e) => {
-                                setName(firstName + e.target.value)
+                                setName(firstName +" "+ e.target.value)
                                 setLastName(e.target.value)
-                                console.log(lastName)
+                                console.log(e)
                             }
                             } />
                         </div>
