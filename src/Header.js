@@ -3,7 +3,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Height, LinkedIn } from '@mui/icons-material';
 import './Header.css'
 import HeaderOption from './HeaderOption';
-// import HomeIcon from '@mui/icons-material/Home';
 import {Home,People,BusinessCenter,Message,Notifications} from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import userSlice, { logout, selectUser } from './features/userSlice';
@@ -19,8 +18,6 @@ export default function Header() {
   return (
     <div className='header'>
       <div className="header_left">
-        {/* <img src={LinkedInIcon} alt="" srcset="" />
-         */}
          <LinkedIn fontSize='large' color='primary'/>
         <div className="header_search">
             <SearchIcon />
