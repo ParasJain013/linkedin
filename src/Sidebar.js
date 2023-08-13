@@ -10,7 +10,6 @@ function Sidebar() {
         <div className="sidebar_recentItems">
             <span className="sidebar_hash">#</span>
             <p>{topic}</p>
-            {/* {console.log(topic)} */}
         </div>
     )
     return (
