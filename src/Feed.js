@@ -23,9 +23,6 @@ function Feed() {
     const q = query(collection(db, "posts"),orderBy("timestamp","desc"))
 onSnapshot(q,(snapshot)=>{
   snapshot.docs.map((doc)=>{
-
-    // console.log(doc)
-    // {console.log(doc._key.path.segments[6])}
   })
 setPosts(
   snapshot.docs.map((doc)=>({
@@ -48,11 +45,6 @@ setPosts(
 
    function sendPost(e){
     e.preventDefault();
-    // setDoc(doc(db, "posts"),{
-    //   name: "Paras",
-    //   description: "This is Test",
-    //   message: "where is first post"
-    // },{merge:true} );
     addDoc(collection(db, "posts"), {
       name: user.displayName,
       description: user.email,
@@ -62,7 +54,6 @@ setPosts(
       
     });
     setInput("");
-    // console.log("TIMESTAMP")
   }
   return (
     <div className="feed">
