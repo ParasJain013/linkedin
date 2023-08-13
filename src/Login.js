@@ -35,14 +35,8 @@ export default function Login() {
         if (!firstName || !lastName) {
             return alert("Enter Full Name");
         }
-        // await setName(firstName + ' ' + lastName);
-        // console.log(name);
         createUserWithEmailAndPassword(auth, email, password)
-
             .then((result) => {
-
-                // console.log("42 Before UPDATE resutl.user" + JSON.stringify(result.user) + "NAME  " + name + " FIRST " + firstName)
-                // console.log(name);
                 return updateProfile(result.user, {
                     displayName: name,
                 })
@@ -50,33 +44,16 @@ export default function Login() {
             })
             .then(() => {
                 const user = auth.currentUser;
-                // console.log(auth.currentUser)
                 dispatch(login({
                     email: user.email,
                     uid: user.uid,
                     displayName: name,
                 }))
-                // console.log(user.email, user.uid, user.displayName);
-
             })
-            .then(() => {
-                console.log(((JSON.stringify(user))))
-            })
-
-
-            // .then(() => {
-            //     console.log('auth Current USER' + JSON.stringify(auth.currentUser) + "NAME   " + name + " FIRST " + firstName)
-            // })
-
             .catch((error) => {
                 alert(error)
                 console.log(error)
             })
-        // await setDisplayName();
-
-
-        // console.log("AFTER EVRYTHING" + JSON.stringify(auth.currentUser) + "NAME" + name + " FIRST " + firstName);
-
     }
 
     return (
